@@ -21,7 +21,7 @@ pip install Flask sqlite3
 ```
 4) Run the API.
 ```sh
-python api.py
+python iot-app.py
 ```
 5) Install curl. 
 
