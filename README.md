@@ -14,21 +14,22 @@ The API will respond to requests with data, which is often in the form of JSON. 
 ```sh
 git clone https://github.com/ThingEngineer/Basic-IoT-API.git
 ```
-2) Install the required packages. (sqlite3 is comes with Python 3.4+ but we will install it anyway) 
+2) Navigate to the python directory.
+3) Install the required packages. (sqlite3 is comes with Python 3.4+ but we will install it anyway) 
 ```sh
 pip install Flask sqlite3
 ```
-3) Run the API.
+4) Run the API.
 ```sh
 python api.py
 ```
-4) Install curl. 
+5) Install curl. 
 
 curl is a command line tool for sending requests to APIs. It is not required but it is helpful for testing the API. This is the linux command to install curl. If you are using Windows, you can download curl from [here](https://curl.haxx.se/windows/). On macOS, curl is already installed.
 ```sh
 sudo apt install curl
 ```
-4) Test the API with curl. Replace the IP address with the IP address of the computer running the API.
+6) Test the API with curl. Replace the IP address with the IP address of the computer running the API.
 
 These are some examples of how to use curl to test the API. You can also use a tool like [Postman](https://www.postman.com) to test the API. These API endpoints are what the microcontroller and the web app will be using to communicate.
 
@@ -48,12 +49,20 @@ POST a new message
 ```sh
 curl -d 'body=Hello World' http://127.0.0.1.22:5000/api/message
 ```
-5) Open the web app in a browser. Replace the IP address with the IP address of the computer running the API.
+7) Open the web app in a browser. Replace the IP address with the IP address of the computer running the API.
 ```sh
 http://127.0.0.1.22:5000
 ```
 Here you can view the temperature readings and clear the temperature readings from the database. You can also add and update the message that is displayed on the microcontroller serial monitor.
 
+---
+### Next.js backend API, database and frontend web app
+1) Clone this repository or download it as a zip file.
+```sh
+git clone https://github.com/ThingEngineer/Basic-IoT-API.git
+```
+2) Navigate to the python directory.
+3) ***TODO***
 ---
 ## Reference
 [Python Docs](https://docs.python.org/3/) - The official Python documentation.
