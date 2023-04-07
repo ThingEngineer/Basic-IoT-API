@@ -1,7 +1,7 @@
-# Basic-IoT-API
+# Basic-IoT-API (backend API, database and frontend web app) 
 Basic Microcontroller API Consumption
 
-This repository is part of a series on how to consume an API with a microcontroller. The other repository in the series is the [Basic-ESP-IoT](https://github.com/ThingEngineer/Basic-ESP-IoT).
+This repository is part of a series on how to consume an API with a microcontroller. The other repository in the series is the microcontroller firmware: [Basic-ESP-IoT](https://github.com/ThingEngineer/Basic-ESP-IoT).
 
 “Consume API” means to engage with the API, this is done by sending requests to the API and receiving responses. 
 
