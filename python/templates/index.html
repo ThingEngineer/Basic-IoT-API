@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="ThingEngineer/Basic-IoT-API - backend API, database and frontend web app">
+    <title>Temperature Readings</title>
+</head>
+<body>
+    <h2>Set New Message</h2>
+    <input type="text" id="message-input" placeholder="Enter new message">
+    <button id="submit-message-btn">Submit</button>
+    <h2>Temperature Readings</h2>
+    <ul id="temperature-list"></ul>
+    <button id="delete-all-btn">Clear All Readings</button>
+
+    <script>
+        async function submitMessage() {
+            const messageInput = document.getElementById('message-input');
+            const messageBody = messageInput.value;
+            const response = await fetch('/api/message', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                body: `body=${encodeURIComponent(messageBody)}`
+            });
+
+            if (response.status === 200) {
+                alert('Message submitted');
+                messageInput.value = '';
+            } else {
+                alert('Failed to submit message');
+            }
+        }
+
+        async function fetchTemperatureReadings() {
+            const response = await fetch('/api/temperature');
+            const data = await response.json();
+            const temperatureList = document.getElementById('temperature-list');
+            data.temperature_readings.forEach(reading => {
+                const li = document.createElement('li');
+                li.textContent = `${reading[1]}°F at ${reading[0]}`;
+                temperatureList.appendChild(li);
+            });
+        }
+
+        async function deleteAllRecords() {
+            const response = await fetch('/delete_all', { method: 'POST' });
+            if (response.status === 200) {
+                alert('All records deleted');
+                const temperatureList = document.getElementById('temperature-list');
+                temperatureList.innerHTML = '';
+            } else {
+                alert('Failed to delete records');
+            }
+        }
+
+        document.getElementById('submit-message-btn').addEventListener('click', submitMessage);
+
+        document.getElementById('delete-all-btn').addEventListener('click', deleteAllRecords);
+
+        fetchTemperatureReadings();
+    </script>
+</body>
+</html>
